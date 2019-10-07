@@ -1,0 +1,22 @@
+<div class="homepage-bg">
+
+  <a class="homepage-logo__link" href="/">
+    <img class="homepage-logo__img" src="./images/logov3.svg"
+      alt="Logo made by an exagon and the name IronGarden centered in the middle">
+  </a>
+
+  <div class="form-container">
+
+    <form action="/signup" method="POST">
+      {{!-- <label class="form-container__labels" for="username">Username</label> --}}
+      <input class="form-container__inputs" id="username" type="text" name="username" placeholder="Username">
+      <br>
+      {{!-- <label class="form-container__labels" for="password">Password</label> --}}
+      <input class="form-container__inputs" id="password" type="password" name="password" placeholder="Password">
+      <br>
+      <button class="form-container__btn" type="submit">Signup</button>
+      <p class="form-container__paragraph">Already have an account? <a href="/login">Login!</a></p>
+    </form>
+  </div>
+
+</div>

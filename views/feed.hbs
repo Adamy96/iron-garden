@@ -1,0 +1,39 @@
+<!-- O nav vai ser utilizado como um mixin -->
+<nav class="navbar">
+  <div class="navbar__custom-info">
+    <img src="./images/logov3.svg" alt="" class="navbar__logo">
+
+    <div class="navbar__btns-container">
+      <!-- Customizar de acordo com o status "user logado" -->
+      <a href="/signup" class="navbar__btns-container--btn">Sign Up</a>
+      <a href="/login" class="navbar__btns-container--btn">Login</a>
+    </div>
+  </div>
+
+  <div class="navbar__hr-like"></div>
+
+  <form action="/api" method="POST" class="navbar-search">
+    <!-- Chamada AJAX -->
+    <input placeholder="Search projects" type="text" class="navbar-search__input">
+    <button class="navbar-search__btn">Search</button>
+  </form>
+</nav>
+
+<div class="feed-users">
+  <div class="feed-users__title">Users</div>
+  <div class="feed-users__container">
+    {{!-- Fazer um Each pra percorrer todos os usuários e colocá-los lado a lado + setas p/ 
+    navegar para direita/esquerda --}}
+  </div>
+</div>
+
+<div class="feed-projects">
+  <div class="feed-projects__title"></div>
+  <div class="feed-projects__container">
+    {{!-- Fazer um Each pra percorrer todos os projetos e colocá-los lado a lado com flex-wrap --}}
+  </div>
+</div>
+
+<footer class="footer">
+
+</footer>
