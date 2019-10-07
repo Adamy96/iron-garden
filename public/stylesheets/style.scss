@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.homepage {
+
+  &-content {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-logo {
+
+    &__link {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    &__img {
+    margin: 3rem 0 2rem 0;
+    width: 15rem;
+    height: 15rem;
+    }
+  }
+
+  &-description {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  &-icons {
+    &__container {
+      width: 70%;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__card {
+      width: 30%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    &__img {
+      background-color: red;
+      width: 7rem;
+      height: 7rem;
+    }
+  }
+
+  &-btns {
+    width: 70%;
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &__link {
+      width: 11rem;
+      text-align: center;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border: 1px solid rgba(80,80,80,.3);
+      background-color: #4c4c4c;
+      border-radius: .5rem;
+      color: #fff;
+      font-weight: 600;
+      outline: none;
+
+      &--large {
+        text-align: center;
+        text-decoration: none;
+        margin-top: 2rem;
+        width: 18rem;
+        padding: 1rem 2rem;
+        border: 1px solid rgba(80,80,80,.3);
+        background-color: #4c4c4c;
+        border-radius: .5rem;
+        color: #fff;
+        font-weight: 600;
+        outline: none;
+      }
+    }
+  }
+
+}
+
+.form-container {
+  position: relative;
+  width: 25rem;
+  height: 35rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__labels {
+    margin-bottom: .5rem;
+    width: 25rem;
+    text-align: center;
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  &__inputs {
+    width: 26rem;
+    padding: 1rem 3rem;
+    margin-bottom: 1rem;
+    outline-color: rgb(70, 230, 70);
+    font-size: 1.6rem;
+    border: 1px solid rgba(80,80,80, .3);
+    border-radius: .5rem;
+  }
+
+  &__btn {
+    text-align: center;
+    margin-top: .5rem;
+    padding: 1rem 2rem;
+    width: 18rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    border: 1px solid rgba(80, 80, 80, .6);
+    font-size: 2rem;
+  }
+
+  &__paragraph {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    & > a {
+      text-decoration: none;
+      font-weight: 700;
+      color: rgb(50, 200, 50);
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__hr-like {
+    background-color: rgba(80,80,80, .4);
+    height: 1px;
+    width: 100%;
+  }
+
+  &__custom-info {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
+    background-color: #ccc;
+  }
+
+  &__logo {
+    margin: .5rem 0;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__btns-container {
+    
+    &--btn {
+      font-size: 1.2rem;
+      width: 6rem;
+      padding: .5rem 1rem;
+      border-radius: .6rem;
+      border: 1px solid rgba(80,80,80, .3);
+      background-color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+    }
+  }
+
+  &-search {
+    display: flex;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: #ccc;
+
+    &__input {
+      width: 85%;
+      padding: .7rem 2rem;
+      border: 1px solid rgba(80,80,80, .3);
+      outline-color: rgb(70, 230, 70);
+    }
+
+    &__btn {
+      padding: .7rem;
+    }
+  }
+}
