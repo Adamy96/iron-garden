@@ -9,6 +9,12 @@ html {
   font-family: 'Exo 2', sans-serif;
 }
 
+.hr-like {
+  background-color: rgba(80,80,80, .1);
+  height: 1px;
+  width: 100%;
+}
+
 .homepage {
 
   &-content {
@@ -25,6 +31,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: linear-gradient(to bottom right, deepskyblue, mediumturquoise);
   }
 
   &-logo {
@@ -47,8 +54,11 @@ html {
   }
 
   &-description {
-    font-size: 1.2rem;
+    border-radius: 9px;
+    font-size: 2.2rem;
     text-align: center;
+    color: lawngreen;
+    // border-bottom: 3px solid white;
   }
 
   &-icons {
@@ -67,28 +77,29 @@ html {
     }
 
     &__img {
-      background-color: red;
-      width: 7rem;
-      height: 7rem;
+      // background-color: red;
+      width: 3rem;
+      height: 5rem;
     }
   }
 
   &-btns {
-    width: 70%;
-    margin-top: 4rem;
+    width: 75%;
+    margin-top: 3rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    background-color: Transparent;
 
     &__link {
       width: 11rem;
       text-align: center;
       text-decoration: none;
       padding: 1rem 2rem;
-      border: 1px solid rgba(80,80,80,.3);
-      background-color: #4c4c4c;
-      border-radius: .5rem;
+      border: 2px solid white;
+      // background-color: #4c4c4c;
+      border-radius: 2.5rem;
       color: #fff;
       font-weight: 600;
       outline: none;
@@ -99,8 +110,8 @@ html {
         margin-top: 2rem;
         width: 18rem;
         padding: 1rem 2rem;
-        border: 1px solid rgba(80,80,80,.3);
-        background-color: #4c4c4c;
+        border: 2px solid white;
+        // background-color: #4c4c4c;
         border-radius: .5rem;
         color: #fff;
         font-weight: 600;
@@ -119,7 +130,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   & > form {
     display: flex;
     flex-direction: column;
@@ -141,8 +152,9 @@ html {
     margin-bottom: 1rem;
     outline-color: rgb(70, 230, 70);
     font-size: 1.6rem;
-    border: 1px solid rgba(80,80,80, .3);
+    border: 2px solid white;
     border-radius: .5rem;
+    text-align: center;
   }
 
   &__btn {
@@ -151,9 +163,10 @@ html {
     padding: 1rem 2rem;
     width: 18rem;
     border-radius: 1rem;
-    background-color: #fff;
-    border: 1px solid rgba(80, 80, 80, .6);
+    background-color: Transparent;
+    border: 2px solid white;
     font-size: 2rem;
+    color: #fff;
   }
 
   &__paragraph {
@@ -161,18 +174,21 @@ html {
     font-size: 1.2rem;
     font-weight: 500;
 
-    & > a {
+    &>a {
       text-decoration: none;
       font-weight: 700;
-      color: rgb(50, 200, 50);
+      color: lawngreen;
+      text-decoration-line: underline;
     }
   }
 }
 
 .navbar {
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   &__hr-like {
     background-color: rgba(80,80,80, .4);
@@ -197,14 +213,13 @@ html {
   }
 
   &__btns-container {
-    
     &--btn {
       font-size: 1.2rem;
       width: 6rem;
       padding: .5rem 1rem;
       border-radius: .6rem;
-      border: 1px solid rgba(80,80,80, .3);
-      background-color: #fff;
+      border: 2px solid white;
+      background-color: Transparent;
       margin-left: 1rem;
       text-decoration: none;
       color: #333;
@@ -220,12 +235,197 @@ html {
     &__input {
       width: 85%;
       padding: .7rem 2rem;
-      border: 1px solid rgba(80,80,80, .3);
+      border: 2px solid white;
       outline-color: rgb(70, 230, 70);
     }
 
     &__btn {
       padding: .7rem;
+    }
+  }
+}
+
+@import url(//fonts.googleapis.com/css?family=Vibur);
+
+// .logo {
+//   text-align: center;
+//   width: 65%;
+//   height: 250px;
+//   margin: auto;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   user-select: none;
+// }
+
+.logo b {
+  font: 400 7vh "Vibur";
+  color: lawngreen;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #46e646, 0 0 0.5em #46e646, 0 0 0.1em #46e646, 0 3px cornflowerblue
+}
+
+.logo b span {
+  animation: blink linear infinite 2s;
+}
+
+.logo b span:nth-of-type(2) {
+  animation: blink linear infinite 3s;
+}
+
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  79% {
+    color: #333;
+  }
+
+  80% {
+
+    text-shadow: none;
+  }
+
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+#btn-twtr {
+  clear: both;
+  color: #fff;
+  border: 2px solid;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-family: sans-serif;
+  font-size: 14px;
+  width: 13em;
+  padding: 5px 10px;
+  font-weight: 600;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0px 3px rgba(0, 0, 0, 0.2);
+  opacity: 0.4
+}
+
+#btn-twtr:hover {
+  color: #fff;
+  opacity: 1
+}
+
+.user {
+  
+  &-bg {
+    background-color: #eee;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__hr-like {
+    height: 1rem;
+    background-image: linear-gradient(to bottom, rgba(160,160,160,.2), rgba(160,160,160,0));
+  }
+
+  &-header {
+    width: 100%;
+    margin-top: 12rem;
+    background-color: #fff;
+    padding-left: 1.2rem;
+    min-height: 8rem;
+    // margin-top: 14rem;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+  }
+
+  &-profile {
+    
+    &__img {
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &-bg {
+        background-color: #fff;
+        border-radius: 50%;
+        width: 6.5rem;
+        height: 6.5rem;
+        position: relative;
+      }
+    }
+
+    &__username {
+      margin-left: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+    
+    &__about {
+      background-color: #fff;
+      width: 100%;
+      min-height: 8rem;
+
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 2rem 0 2rem;
+        align-items: center;
+
+        &--title {
+          font-size: 1.4rem;
+          font-weight: 400;
+        }
+
+        &--edit {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      &--text {
+        padding: 2rem;
+        text-align: justify;
+      }
+    }
+    
+    &__projects {
+      background-color: #fff;
+      min-height: 12rem;
     }
   }
 }
