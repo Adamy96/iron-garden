@@ -17,7 +17,8 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/profile', (req, res, next) => {
-  res.render('auth/profile');
+  const user = req.user;
+  res.render('auth/profile', { user });
 })
 
 router.get('/protected', ensureLogin.ensureLoggedIn(), (req, res, next) => {
@@ -46,7 +47,6 @@ router.post('/signup', (req, res, next) => {
 router.post('/login', passport.authenticate("local", {
   successRedirect: "/feed",
   failureRedirect: "/login",
-  failureFlash: true,
   passReqToCallback: true
 }));
 
