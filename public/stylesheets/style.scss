@@ -9,6 +9,12 @@ html {
   font-family: 'Exo 2', sans-serif;
 }
 
+.hr-like {
+  background-color: rgba(80,80,80, .1);
+  height: 1px;
+  width: 100%;
+}
+
 .homepage {
 
   &-content {
@@ -39,11 +45,11 @@ html {
       user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
-
+    
     &__img {
-      margin: 3rem 0 2rem 0;
-      width: 15rem;
-      height: 15rem;
+    margin: 3rem 0 2rem 0;
+    width: 15rem;
+    height: 15rem;
     }
   }
 
@@ -124,8 +130,8 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  &>form {
+  
+  & > form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,12 +184,14 @@ html {
 }
 
 .navbar {
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   &__hr-like {
-    background-color: white;
+    background-color: rgba(80,80,80, .4);
     height: 1px;
     width: 100%;
   }
@@ -205,7 +213,6 @@ html {
   }
 
   &__btns-container {
-
     &--btn {
       font-size: 1.2rem;
       width: 6rem;
@@ -308,8 +315,6 @@ html {
   }
 }
 
-
-/* follow me @nodws */
 #btn-twtr {
   clear: both;
   color: #fff;
@@ -336,4 +341,91 @@ html {
 #btn-twtr:hover {
   color: #fff;
   opacity: 1
+}
+
+.user {
+  
+  &-bg {
+    background-color: #eee;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__hr-like {
+    height: 1rem;
+    background-image: linear-gradient(to bottom, rgba(160,160,160,.2), rgba(160,160,160,0));
+  }
+
+  &-header {
+    width: 100%;
+    margin-top: 12rem;
+    background-color: #fff;
+    padding-left: 1.2rem;
+    min-height: 8rem;
+    // margin-top: 14rem;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+  }
+
+  &-profile {
+    
+    &__img {
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &-bg {
+        background-color: #fff;
+        border-radius: 50%;
+        width: 6.5rem;
+        height: 6.5rem;
+        position: relative;
+      }
+    }
+
+    &__username {
+      margin-left: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+    
+    &__about {
+      background-color: #fff;
+      width: 100%;
+      min-height: 8rem;
+
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 2rem 0 2rem;
+        align-items: center;
+
+        &--title {
+          font-size: 1.4rem;
+          font-weight: 400;
+        }
+
+        &--edit {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      &--text {
+        padding: 2rem;
+        text-align: justify;
+      }
+    }
+    
+    &__projects {
+      background-color: #fff;
+      min-height: 12rem;
+    }
+  }
 }

@@ -12,9 +12,43 @@
 
   <div class="navbar__hr-like"></div>
 
-  <form action="/api" method="POST" class="navbar-search">
-    <!-- Chamada AJAX -->
+  <form action="/api" method="POST" class="navbar-search"> <!-- Chamada AJAX -->
     <input placeholder="Search projects" type="text" class="navbar-search__input">
     <button class="navbar-search__btn">Search</button>
   </form>
+  
 </nav>
+
+<div class="user-bg">
+  <div class="user-header">
+    <div class="user-profile__img-bg">
+      <img src="{{user.avatarUrl}}" alt="" class="user-profile__img">
+    </div>
+    <h3 class="user-profile__username">{{user.username}}</h3>
+  </div>
+
+  <div class="user__hr-like"></div>
+
+  <div class="user-profile__about">
+    <div class="user-profile__about-header">
+      <h3 class="user-profile__about-header--title">About</h3>
+      <img class="user-profile__about-header--edit" src="./images/edit_pencil.svg" alt="Edit pencil">
+    </div>
+    
+    {{!-- <p class="user-profile__about--text">{{user.description}}</p> --}}
+    <p class="user-profile__about--text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod eligendi molestiae animi, recusandae unde quaerat saepe fugiat nisi laborum, assumenda est veniam! Quibusdam earum ea sapiente accusantium, rem eligendi modi.
+    </p>
+  </div>
+
+  <div class="user__hr-like"></div>
+
+  <div class="user-profile__projects">
+    <div class="user-profile__about-header">
+      <h3 class="user-profile__about-header--title">Projects</h3>
+      <img class="user-profile__about-header--edit" src="./images/plus2.svg" alt="Edit pencil">
+    </div>
+
+  </div>
+  
+</div>
