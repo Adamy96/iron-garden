@@ -1,7 +1,7 @@
 <!-- O nav vai ser utilizado como um mixin -->
 <nav class="navbar">
   <div class="navbar__custom-info">
-    <img src="./images/logov3.svg" alt="" class="navbar__logo">
+    <img src="../images/logov3.svg" alt="" class="navbar__logo">
 
     <div class="navbar__btns-container">
       <!-- Customizar de acordo com o status "user logado" -->
@@ -19,36 +19,58 @@
   
 </nav>
 
-<div class="user-bg">
-  <div class="user-header">
-    <div class="user-profile__img-bg">
-      <img src="{{user.avatarUrl}}" alt="" class="user-profile__img">
-    </div>
-    <h3 class="user-profile__username">{{user.username}}</h3>
-  </div>
+{{#with user}}
+  <div class="user-bg">
+    <div class="user-profile__header">
+      <div class="user-profile__header--left-container">
+        <div class="user-profile__img-bg">
+          <img src="{{avatarUrl}}" alt="" class="user-profile__img">
+        </div>
+        <h3 class="user-profile__username">{{username}}</h3>
+      </div>
+      
 
-  <div class="user__hr-like"></div>
-
-  <div class="user-profile__about">
-    <div class="user-profile__about-header">
-      <h3 class="user-profile__about-header--title">About</h3>
-      <img class="user-profile__about-header--edit" src="./images/edit_pencil.svg" alt="Edit pencil">
+      {{#ifCond username '==' ../currentUser.username}}
+        <a href="/profile-edit" class="user-profile__edit-btn">Edit profile</a>
+      {{/ifCond}}
     </div>
+
     
-    {{!-- <p class="user-profile__about--text">{{user.description}}</p> --}}
-    <p class="user-profile__about--text">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod eligendi molestiae animi, recusandae unde quaerat saepe fugiat nisi laborum, assumenda est veniam! Quibusdam earum ea sapiente accusantium, rem eligendi modi.
-    </p>
-  </div>
 
-  <div class="user__hr-like"></div>
+    <div class="user__hr-like"></div>
 
-  <div class="user-profile__projects">
-    <div class="user-profile__about-header">
-      <h3 class="user-profile__about-header--title">Projects</h3>
-      <img class="user-profile__about-header--edit" src="./images/plus2.svg" alt="Edit pencil">
+    <div class="user-profile__about">
+      <div class="user-profile__about-header">
+        <h3 class="user-profile__about-header--title">About</h3>
+        {{#ifCond username '==' ../currentUser.username}}
+          <img class="user-profile__about-header--edit" src="../images/edit_pencil.svg" alt="Edit pencil">
+        {{/ifCond}}
+      </div>
+      
+      <p class="user-profile__about--text">
+        {{about}}
+      </p>
+
+      <form action="/profile-edit-about" method="POST">
+        <textarea class="user-profile__about--textarea no-display" name="about" type="text"></textarea>
+
+        <div class="btn__edit-container no-display">
+          <button class="btn__save-update" type="submit">Update</button>
+        </div>
+      </form>
     </div>
 
+    <div class="user__hr-like"></div>
+
+    <div class="user-profile__projects">
+      <div class="user-profile__projects-header">
+        <h3 class="user-profile__projects-header--title">Projects</h3>
+        {{#ifCond username '==' ../currentUser.username}}
+          <img class="user-profile__projects-header--edit" src="../images/plus2.svg" alt="Edit pencil">
+        {{/ifCond}}
+      </div>
+
+    </div>
   </div>
-  
-</div>
+
+{{/with}}
