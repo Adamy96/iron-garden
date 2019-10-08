@@ -1,2 +1,6 @@
 node_modules
 .env
+
+views/auth/login.hbs
+views/auth/signup.hbs
+views/homepage.hbs
