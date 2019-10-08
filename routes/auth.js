@@ -9,17 +9,33 @@ const ensureLogin = require("connect-ensure-login");
 
 // ========================================= GET ROUTES =======================================
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+  res.render('auth/signup', { title: 'Signup' });
 });
 
-router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+router.get('/feed', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  res.render('feed');
 });
 
-router.get('/profile', (req, res, next) => {
+router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const user = req.user;
-  res.render('auth/profile', { user });
-})
+  res.render('auth/profile', { user, currentUser: req.user });
+});
+
+router.get('/profile/newProject', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  const user = req.user;
+  res.render('auth/newProject', user);
+});
+
+router.get('/profile/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  const id = req.params.id;
+  console.log(id);
+
+  User.findById(id)
+    .then(user => {
+      res.render('auth/profile', { user, currentUser: req.user });
+    })
+    .catch(err => { throw new Error(err) });
+});
 
 router.get('/protected', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('auth/protected');
@@ -27,27 +43,44 @@ router.get('/protected', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 // ========================================= POST ROUTES ======================================
 router.post('/signup', (req, res, next) => {
-  let { username, password } = req.body;
+  let { username, password, password_check } = req.body;
   console.log(username, password);
 
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
 
-  User.create({ // Precisa fazer o login automaticamente
-    username,
-    password: hashPass
-    }).then(data => {
-      console.log(`User created: ${data}`);
-      passport.authenticate('local')(req, res, function () {
-        res.redirect('/feed');
-    });
-  }).catch(err => { throw new Error(err)} );
-})
+  if (password === password_check) {
+    User.create({ // Precisa fazer o login automaticamente
+      username,
+      password: hashPass
+      }).then(data => {
+        console.log(`User created: ${data}`);
+        passport.authenticate('local')(req, res, function () {
+          res.redirect('/feed');
+      });
+    }).catch(err => { throw new Error(err)} );
+  } else {
+    res.render('auth/signup', { message: `Password doesn't match.` });
+  }
+});
 
-router.post('/login', passport.authenticate("local", {
+router.post('/', passport.authenticate("local", {
   successRedirect: "/feed",
-  failureRedirect: "/login",
+  failureRedirect: "/",
   passReqToCallback: true
 }));
+
+// ========================================== PUT ROUTES ======================================
+router.post('/profile-edit-about', (req, res, next) => {
+  const { about } = req.body;
+
+  console.log(req.user);
+
+  User.findOneAndUpdate({ _id: req.user._id}, {
+    about
+  })
+    .then(data => res.redirect('/profile'))
+    .catch(err => {throw new Error(err)});
+})
 
 module.exports = router;
