@@ -31,7 +31,13 @@
       
 
       {{#ifCond username '==' ../currentUser.username}}
-        <a href="/profile-edit" class="user-profile__edit-btn">Edit profile</a>
+        <a href="/profile-edit" class="user-profile__image-edit--btn">Edit profile</a>
+
+        {{!-- <form action="/profile-edit-image" method="POST">
+          <label for="imageUrl">Choose an image:</label>
+          <input id="imageUrl" name="imageUrl" type="file">
+          <button type="submit">Submit</button>
+        </form> --}}
       {{/ifCond}}
     </div>
 

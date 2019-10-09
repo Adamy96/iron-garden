@@ -7,6 +7,15 @@ const User = require('../models/user');
 const flash = require('connect-flash');
 const ensureLogin = require("connect-ensure-login");
 
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: 'viniciusadamy',
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+
 // ========================================= GET ROUTES =======================================
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup', { title: 'Signup' });
@@ -70,7 +79,7 @@ router.post('/', passport.authenticate("local", {
   passReqToCallback: true
 }));
 
-// ========================================== PUT ROUTES ======================================
+// Updating About
 router.post('/profile-edit-about', (req, res, next) => {
   const { about } = req.body;
 
@@ -81,6 +90,11 @@ router.post('/profile-edit-about', (req, res, next) => {
   })
     .then(data => res.redirect('/profile'))
     .catch(err => {throw new Error(err)});
-})
+});
+
+// Updating profile image
+router.post('/profile-edit-image', (req, res, next) => {
+
+});
 
 module.exports = router;
