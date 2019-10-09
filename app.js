@@ -17,7 +17,6 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-
 mongoose
   .connect('mongodb://localhost/second_project', {
     useNewUrlParser: true

@@ -226,7 +226,7 @@ html {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-image: linear-gradient(to bottom right, deepskyblue, mediumturquoise); }
+  background-color: #1BCC89; }
   .navbar__hr-like {
     background-color: rgba(80, 80, 80, 0.4);
     height: 1px;
