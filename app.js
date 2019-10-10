@@ -17,7 +17,6 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-
 mongoose
   .connect('mongodb://localhost/second_project', {
     useNewUrlParser: true
@@ -86,6 +85,37 @@ passport.use(new LocalStrategy((username, password, next) => {
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// ================================= Podendo utilizar comparações no HBS ========================
+hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+  switch (operator) {
+      case '==':
+          return (v1 == v2) ? options.fn(this) : options.inverse(this);
+      case '===':
+          return (v1 === v2) ? options.fn(this) : options.inverse(this);
+      case '!=':
+          return (v1 != v2) ? options.fn(this) : options.inverse(this);
+      case '!==':
+          return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+      case '<':
+          return (v1 < v2) ? options.fn(this) : options.inverse(this);
+      case '<=':
+          return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+      case '>':
+          return (v1 > v2) ? options.fn(this) : options.inverse(this);
+      case '>=':
+          return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+      case '&&':
+          return (v1 && v2) ? options.fn(this) : options.inverse(this);
+      case '||':
+          return (v1 || v2) ? options.fn(this) : options.inverse(this);
+      default:
+          return options.inverse(this);
+  }
+});
+// ===========================================================================================
+
 
 // Express View engine setup
 

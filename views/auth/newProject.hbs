@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="navbar__custom-info">
+    <img src="../images/logov3.svg" alt="" class="navbar__logo">
+
+    <div class="navbar__btns-container">
+      <!-- Customizar de acordo com o status "user logado" -->
+      <a href="/signup" class="navbar__btns-container--btn">Sign Up</a>
+      <a href="/login" class="navbar__btns-container--btn">Login</a>
+    </div>
+  </div>
+
+  <div class="navbar__hr-like"></div>
+
+  <form action="/api" method="POST" class="navbar-search"> <!-- Chamada AJAX -->
+    <input placeholder="Search projects" type="text" class="navbar-search__input">
+    <button class="navbar-search__btn">Search</button>
+  </form>
+  
+</nav>

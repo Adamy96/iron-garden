@@ -1,35 +1,32 @@
 <div class="homepage-bg">
 
-  <img class="homepage-logo__img" src="./images/logov3.svg"
-    alt="Logo made by an exagon and the name IronGarden centered in the middle">
+  <div class="homepage-card__container-shadow"></div>
+  <div class="homepage-card__container">
+    <img class="homepage-card__logo" src="./images/newLogo.svg" alt="Logo IronGarden">
+    <h4 class="homepage-card__subtitle">GROWING TOGETHER</h4>
 
-  <div class="homepage-content">
-    {{!-- <p class="homepage-description">GROWING TOGETHER</p> --}}
-    <div class="logo"><b>G<span>ro</span>wing<span> Toge</span>ther</b></div>
-
-    {{!-- <div class="homepage-icons__container">
-      <div class="homepage-icons__card">
-        <img src="./images/share-alt-solid.svg" alt="" class="homepage-icons__img">
-        <p class="homepage-icons__title">img1</p>
+    <form action="/" class="homepage-form" method="POST">
+      <div class="homepage-form__row">
+        <label class="homepage-form__label" for="username">
+          <img src="./images/user.svg" alt="User icon" class="homepage-form__label-icon">
+        </label>
+        <input class="homepage-form__input" type="text" name="username" placeholder="username">
       </div>
-      <div class="homepage-icons__card">
-        <img src="./images/share-square-regular.svg" alt="" class="homepage-icons__img">
-        <p class="homepage-icons__title">img2</p>
+      <div class="homepage-form__row">
+        <label class="homepage-form__label" for="">
+          <img src="./images/locker.svg" alt="User icon" class="homepage-form__label-icon">
+        </label>
+        <input class="homepage-form__input" type="password" name="password" placeholder="password">
       </div>
-      <div class="homepage-icons__card">
-        <img src="" alt="" class="homepage-icons__img">
-        <p class="homepage-icons__title">img3</p>
+
+      <div class="homepage-form__row-reverse">
+        <a class="homepage-form__reset" href="#">Esqueci a senha</a>
       </div>
-    </div> --}}
 
-    <div class="homepage-btns">
-      <a href="/signup" class="homepage-btns__link">Sign Up</a>
-      <a href="/login" class="homepage-btns__link">Login</a>
-    </div>
-    <a href="/feed" class="homepage-btns__link--large">Join as Guest</a>
+      <button class="homepage-form__btn" type="submit">Login</button>
 
+      <p class="homepage-form__question">Não tem uma conta?</p>
+      <a href="/signup" class="homepage-form__signup">Crie aqui!</a>
+    </form>
   </div>
-
-
-
 </div>
