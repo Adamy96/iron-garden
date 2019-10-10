@@ -239,6 +239,7 @@ body {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      border-radius: 50px;
 
       &-bg {
         background-color: #fff;
@@ -809,7 +810,8 @@ h1 {
       transform: rotateX(-180deg);
     }
 
-    &:hover {
+    &:hover,
+    &:active {
       >.front {
         transform: rotateX(180deg);
       }

@@ -35,8 +35,9 @@ document.addEventListener(
         "upload/c_fill,h_500,w_500/"
       );
     }
-    // Projects
     const projectForm = document.querySelector("#project-div");
+
+    // Projects
     // let file;
     // let formData;
     // profileImageFile.addEventListener("change", e => {
