@@ -794,7 +794,9 @@ h1 {
     transform: rotateY(-180deg);
   }
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     >.front {
       transform: rotateY(180deg);
     }
@@ -811,7 +813,8 @@ h1 {
     }
 
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       >.front {
         transform: rotateX(180deg);
       }
