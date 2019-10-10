@@ -9,12 +9,13 @@ const ensureLogin = require("connect-ensure-login");
 const Project = require("../models/project");
 
 const cloudinary = require("cloudinary").v2;
+const uploadCloud = require("../config/cloudinary.js");
 
-cloudinary.config({
-  cloud_name: "viniciusadamy",
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
-});
+// cloudinary.config({
+//   cloud_name: "viniciusadamy",
+//   api_key: process.env.CLOUDINARY_KEY,
+//   api_secret: process.env.CLOUDINARY_SECRET
+// });
 
 // ========================================= GET ROUTES =======================================
 router.get("/signup", (req, res, next) => {
@@ -84,6 +85,60 @@ router.get(
 );
 
 // ========================================= POST ROUTES ======================================
+
+// Alterando profile image
+router.post(
+  "/edit-profile-avatar",
+  uploadCloud.single("avatarUrl"),
+  (req, res, next) => {
+    const id = req.user._id;
+
+    User.findByIdAndUpdate(id, {
+      avatarUrl: req.file.url
+    })
+      .then(data => {
+        res.redirect("/profile");
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+);
+
+// Criando projetos
+router.post("/newProject2", uploadCloud.single("image"), (req, res, next) => {
+  const { projectName, description, languages, link } = req.body;
+  const image = req.file.url;
+  const authorId = req.user._id;
+
+  Project.create({
+    projectName,
+    description,
+    languages,
+    link,
+    image,
+    authorId
+  })
+    .then(data => {
+      User.findByIdAndUpdate(authorId, { $push: { projects: data.id } })
+        .then(data2 => {
+          console.log(data2);
+          res.redirect("/profile");
+        })
+        .catch(err => {
+          console.log("ERROR AQUI MESTRE", err);
+          next(err);
+        });
+      console.log(data);
+    })
+    .catch(err => {
+      throw new Error(err);
+    });
+  res.redirect("/profile");
+
+  // res.send(req.file.url);
+});
+
 router.post("/signup", (req, res, next) => {
   let { username, password, password_check } = req.body;
   console.log(username, password);
@@ -175,35 +230,35 @@ router.post("/profile-edit-image", (req, res, next) => {});
 
 //---------------------------------Dont Touch--------------------------------------------------------------------
 
-router.post("/newProject", (req, res, next) => {
-  const { projectName, description, languages, link, image } = req.body;
-  const authorId = req.user._id;
-  console.log(authorId);
-  Project.create({
-    projectName,
-    description,
-    languages,
-    link,
-    image,
-    authorId
-  })
-    .then(data => {
-      User.findByIdAndUpdate(authorId, { $push: { projects: data.id } })
-        .then(data2 => {
-          console.log(data2);
-          res.redirect("/profile");
-        })
-        .catch(err => {
-          console.log("ERROR AQUI MESTRE", err);
-          next(err);
-        });
-      console.log(data);
-    })
-    .catch(err => {
-      throw new Error(err);
-    });
-  res.redirect("/profile");
-});
+// router.post("/newProject", (req, res, next) => {
+//   const { projectName, description, languages, link, image } = req.body;
+//   const authorId = req.user._id;
+//   console.log(authorId);
+//   Project.create({
+//     projectName,
+//     description,
+//     languages,
+//     link,
+//     image,
+//     authorId
+//   })
+//     .then(data => {
+//       User.findByIdAndUpdate(authorId, { $push: { projects: data.id } })
+//         .then(data2 => {
+//           console.log(data2);
+//           res.redirect("/profile");
+//         })
+//         .catch(err => {
+//           console.log("ERROR AQUI MESTRE", err);
+//           next(err);
+//         });
+//       console.log(data);
+//     })
+//     .catch(err => {
+//       throw new Error(err);
+//     });
+//   res.redirect("/profile");
+// });
 
 //---------------------------------------------------------------------------------------------------------------
 

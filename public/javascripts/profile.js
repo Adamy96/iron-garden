@@ -36,41 +36,41 @@ document.addEventListener(
       );
     }
     // Projects
-    const projectForm = document.querySelector("#project-div");
-    let file;
-    let formData;
-    profileImageFile.addEventListener("change", e => {
-      file = e.target.files[0];
-      formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-    });
-    profileImageSave.addEventListener("click", () => {
-      // Adicionando a foto ao Cloudinary
-      axios({
-        url: CLOUDINARY_URL,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: formData
-      })
-        .then(res => {
-          console.log(res);
-          // Passando a referência ao banco de dados
-          axios
-            .post("http://localhost:3000/profile-edit-image", {
-              data: res.data.secure_url
-            })
-            .then(log => console.log(log))
-            .catch(err => {
-              throw new Error(err);
-            });
-        })
-        .catch(err => {
-          throw new Error(err);
-        });
-    });
+    // const projectForm = document.querySelector("#project-div");
+    // let file;
+    // let formData;
+    // profileImageFile.addEventListener("change", e => {
+    //   file = e.target.files[0];
+    //   formData = new FormData();
+    //   formData.append("file", file);
+    //   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    // });
+    // profileImageSave.addEventListener("click", () => {
+    //   // Adicionando a foto ao Cloudinary
+    //   axios({
+    //     url: CLOUDINARY_URL,
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/x-www-form-urlencoded"
+    //     },
+    //     data: formData
+    //   })
+    //     .then(res => {
+    //       console.log(res);
+    //       // Passando a referência ao banco de dados
+    //       axios
+    //         .post("http://localhost:3000/profile-edit-image", {
+    //           data: res.data.secure_url
+    //         })
+    //         .then(log => console.log(log))
+    //         .catch(err => {
+    //           throw new Error(err);
+    //         });
+    //     })
+    //     .catch(err => {
+    //       throw new Error(err);
+    //     });
+    // });
     profileAboutPen.addEventListener("click", () => {
       editingAbout = !editingAbout;
       // Trocando o display entre o About atual e o TextArea p/ edicação

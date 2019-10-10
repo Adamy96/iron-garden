@@ -26,8 +26,10 @@
       </div>
       <h3 class="user-profile__username">{{username}}</h3>
       {{#ifCond username '==' ../currentUser.username}}
-      <input class="user-profile__image-edit--input" name="avatarUrl" type="file">
-      <button class="user-profile__image-edit--save">Save</button>
+      <form action="/edit-profile-avatar" method="POST" enctype="multipart/form-data">
+        <input class="user-profile__image-edit--input" name="avatarUrl" type="file">
+        <button class="user-profile__image-edit--save" type="submit">Save</button>
+      </form>
       {{/ifCond}}
     </div>
   </div>
@@ -65,7 +67,37 @@
       {{/ifCond}}
     </div>
     <div id="project-div" class="no-display">
-      <form action="/newProject" method="POST">
+      {{!-- <form action="/newProject" method="POST" enctype="multipart/form-data">
+        <div class="container">
+          <h1>Create</h1><br>
+          <h2>Please fill in this form to create a Project.</h2>
+          <hr>
+
+          <label for="projectName"><b>Project Name</b></label>
+          <input type="text" placeholder="Enter Project Name" name="projectName" required class="project-input">
+
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="Enter Description" name="description" required class="project-input">
+
+          <label for="languages"><b>Languages</b></label>
+          <input type="text" placeholder="Enter Languages" name="languages" required class="project-input">
+
+          <label for="link"><b>Link</b></label>
+          <input type="text" placeholder="Enter the game direct link" name="link" required class="project-input">
+
+          <label for="image"><b>Image</b></label>
+          <input type="file" name="image" placeholder="Image" required>
+
+
+
+          <hr>
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+          <button type="submit" class="registerbtn">Create Project</button>
+        </div>
+      </form> --}}
+
+      <form action="/newProject2" method="POST" enctype="multipart/form-data">
         <div class="container">
           <h1>Create</h1><br>
           <h2>Please fill in this form to create a Project.</h2>
@@ -130,8 +162,7 @@
 <div class="feed-projects">
   <div class="feed-projects__container">
     <div class="flip">
-      <div class="front"
-        style="background-image: url(https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">
+      <div class="front" style="background-image: url({{this.image}})">
         <h1 class="text-shadow">{{this.projectName}}</hi>
       </div>
       <div class="back">
