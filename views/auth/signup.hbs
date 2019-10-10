@@ -1,37 +1,38 @@
 <div class="homepage-bg">
 
-  <a class="homepage-logo__link" href="/">
-    <img class="homepage-logo__img" src="./images/logov3.svg"
-      alt="Logo made by an exagon and the name IronGarden centered in the middle">
-  </a>
+  <div class="homepage-card__container-shadow"></div>
+  <div class="homepage-card__container">
+    <img class="homepage-card__logo" src="./images/newLogo.svg" alt="Logo IronGarden">
+    <h4 class="homepage-card__subtitle">GROWING TOGETHER</h4>
 
-  <div class="form-container">
+    <form action="/signup" class="homepage-form" method="POST">
+      <div class="homepage-form__row">
+        <label class="homepage-form__label" for="username">
+          <img src="./images/user.svg" alt="User icon" class="homepage-form__label-icon">
+        </label>
+        <input class="homepage-form__input" type="text" name="username" placeholder="username">
+      </div>
+      <div class="homepage-form__row">
+        <label class="homepage-form__label" for="">
+          <img src="./images/locker.svg" alt="User icon" class="homepage-form__label-icon">
+        </label>
+        <input class="homepage-form__input" type="password" name="password" placeholder="password">
+      </div>
+      <div class="homepage-form__row">
+        <label class="homepage-form__label" for="">
+          <img src="./images/locker.svg" alt="User icon" class="homepage-form__label-icon">
+        </label>
+        <input class="homepage-form__input" type="password" name="password_check" placeholder="repeat password">
+      </div>
 
-    <form action="/signup" method="POST">
-      {{!-- <label class="form-container__labels" for="username">Username</label> --}}
-      <input class="form-container__inputs" id="username" type="text" name="username" placeholder="Username">
-      <br>
-      {{!-- <label class="form-container__labels" for="password">Password</label> --}}
-      <input class="form-container__inputs" id="password" type="password" name="password" placeholder="Password">
-      <br>
-      <button class="form-container__btn" type="submit">Signup</button>
-      <p class="form-container__paragraph">Already have an account? <a href="/login">Login!</a></p>
+      {{#if message}}
+        <p class="homepage-form__error">{{message}}</p>
+      {{/if}}
+
+      <button class="homepage-form__btn" type="submit">Signup</button>
+
+      <p class="homepage-form__question">Já possui uma conta?</p>
+      <a href="/" class="homepage-form__signup">Acesse aqui!</a>
     </form>
-  </div>
-
-</div>
-
-<div class="waveWrapper waveAnimation">
-  <div class="waveWrapperInner bgTop">
-    <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')">
-    </div>
-  </div>
-  <div class="waveWrapperInner bgMiddle">
-    <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')">
-    </div>
-  </div>
-  <div class="waveWrapperInner bgBottom">
-    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')">
-    </div>
   </div>
 </div>

@@ -1,30 +1,35 @@
 <!-- O nav vai ser utilizado como um mixin -->
 <nav class="navbar">
   <div class="navbar__custom-info">
-    <img src="./images/logov3.svg" alt="" class="navbar__logo">
-
-    <div class="navbar__btns-container">
-      <!-- Customizar de acordo com o status "user logado" -->
-      <a href="/signup" class="navbar__btns-container--btn">Sign Up</a>
-      <a href="/login" class="navbar__btns-container--btn">Login</a>
+    <a href="/feed">
+      <img src="../images/logov3.svg" alt="" class="navbar__logo">
+    </a>
+    <form action="/api" method="POST" class="navbar-search">
+      <!-- Chamada AJAX -->
+      <input type="text" class="navbar-search__input">
+      <button class="navbar-search__btn">Search</button>
+    </form>
+    <img src="../images/menuBars.svg" alt="Bars dropdown menu" class="navbar__dropdown">
+    <div class="navbar__dropdown-box no-display">
+      <a href="/profile" class="navbar__dropdown-box--links-profile">Profile</a>
+      <a href="/logout" class="navbar__dropdown-box--links-logout">Logout</a>
     </div>
   </div>
-
-  <div class="navbar__hr-like"></div>
-
-  <form action="/api" method="POST" class="navbar-search"> <!-- Chamada AJAX -->
-    <input placeholder="Search projects" type="text" class="navbar-search__input">
-    <button class="navbar-search__btn">Search</button>
-  </form>
-  
 </nav>
 
+{{#with user}}
 <div class="user-bg">
-  <div class="user-header">
-    <div class="user-profile__img-bg">
-      <img src="{{user.avatarUrl}}" alt="" class="user-profile__img">
+  <div class="user-profile__header">
+    <div class="user-profile__header--left-container">
+      <div class="user-profile__img-bg">
+        <img src="{{avatarUrl}}" alt="" class="user-profile__img">
+      </div>
+      <h3 class="user-profile__username">{{username}}</h3>
+      {{#ifCond username '==' ../currentUser.username}}
+      <input class="user-profile__image-edit--input" name="avatarUrl" type="file">
+      <button class="user-profile__image-edit--save">Save</button>
+      {{/ifCond}}
     </div>
-    <h3 class="user-profile__username">{{user.username}}</h3>
   </div>
 
   <div class="user__hr-like"></div>
@@ -32,23 +37,122 @@
   <div class="user-profile__about">
     <div class="user-profile__about-header">
       <h3 class="user-profile__about-header--title">About</h3>
-      <img class="user-profile__about-header--edit" src="./images/edit_pencil.svg" alt="Edit pencil">
+      {{#ifCond username '==' ../currentUser.username}}
+      <img class="user-profile__about-header--edit" src="../images/edit_pencil.svg" alt="Edit pencil">
+      {{/ifCond}}
     </div>
-    
-    {{!-- <p class="user-profile__about--text">{{user.description}}</p> --}}
+
     <p class="user-profile__about--text">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod eligendi molestiae animi, recusandae unde quaerat saepe fugiat nisi laborum, assumenda est veniam! Quibusdam earum ea sapiente accusantium, rem eligendi modi.
+      {{about}}
     </p>
+
+    <form action="/profile-edit-about" method="POST">
+      <textarea class="user-profile__about--textarea no-display" name="about" type="text"></textarea>
+
+      <div class="btn__edit-container no-display">
+        <button class="btn__save-update" type="submit">Update</button>
+      </div>
+    </form>
   </div>
 
   <div class="user__hr-like"></div>
 
   <div class="user-profile__projects">
-    <div class="user-profile__about-header">
-      <h3 class="user-profile__about-header--title">Projects</h3>
-      <img class="user-profile__about-header--edit" src="./images/plus2.svg" alt="Edit pencil">
+    <div class="user-profile__projects-header">
+      <h3 class="user-profile__projects-header--title">Projects</h3>
+      {{#ifCond username '==' ../currentUser.username}}
+      <img class="user-profile__projects-header--edit" src="../images/plus2.svg" alt="Edit pencil">
+      {{/ifCond}}
     </div>
+    <div id="project-div" class="no-display">
+      <form action="/newProject" method="POST">
+        <div class="container">
+          <h1>Create</h1><br>
+          <h2>Please fill in this form to create a Project.</h2>
+          <hr>
 
+          <label for="projectName"><b>Project Name</b></label>
+          <input type="text" placeholder="Enter Project Name" name="projectName" required class="project-input">
+
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="Enter Description" name="description" required class="project-input">
+
+          <label for="languages"><b>Languages</b></label>
+          <input type="text" placeholder="Enter Languages" name="languages" required class="project-input">
+
+          <label for="link"><b>Link</b></label>
+          <input type="text" placeholder="Enter the game direct link" name="link" required class="project-input">
+
+          <label for="image"><b>Image</b></label>
+          <input type="file" name="image" placeholder="Image" required>
+
+
+
+          <hr>
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+          <button type="submit" class="registerbtn">Create Project</button>
+        </div>
+      </form>
+    </div>
+    {{!-- {{#each projects}}
+
+    <div class="feed-projects">
+      <div class="feed-projects__container">
+        <div class="card">
+          <img class="card-img-top" src="https://www.oficinadanet.com.br/imagens/obj_item/49/cod-iw.jpg"
+            alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{this.projectName}}</h2>
+            <h4 class="card-text">{{this.description}}</h4>
+            <a href="/project/{{this.authorId._id}}" class="btn btn-primary">Play</a>
+            {{#ifCond ../username '==' ../../currentUser.username}}
+            <form action="/delete-project" method="post">
+              <input type="text" style="display:none" name="id" value="{{this._id}}">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            {{/ifCond}}
+          </div>
+        </div>
+      </div>
+    </div> --}}
+
+
+
+
+
+    {{!-- {{/each}} --}}
   </div>
-  
+
 </div>
+
+{{#each projects}}
+<div class="feed-projects">
+  <div class="feed-projects__container">
+    <div class="flip">
+      <div class="front"
+        style="background-image: url(https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">
+        <h1 class="text-shadow">{{this.projectName}}</hi>
+      </div>
+      <div class="back">
+        <h2>{{this.authorId.username}}</h2>
+        <p>{{this.description}}
+        </p>
+        <a href="{{this.link}}" class="btn btn-primary">Play</a>
+        {{#ifCond ../username '==' ../../currentUser.username}}
+        <form action="/delete-project" method="post">
+          <input type="text" style="display:none" name="id" value="{{this._id}}">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        {{/ifCond}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/each}}
+
+{{/with}}
+
+<script src="/javascripts/profile.js"></script>
+<script src="/javascripts/navbar.js"></script>
