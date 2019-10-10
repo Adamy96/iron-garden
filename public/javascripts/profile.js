@@ -36,7 +36,7 @@ document.addEventListener(
       );
     }
     // Projects
-    // const projectForm = document.querySelector("#project-div");
+    const projectForm = document.querySelector("#project-div");
     // let file;
     // let formData;
     // profileImageFile.addEventListener("change", e => {
