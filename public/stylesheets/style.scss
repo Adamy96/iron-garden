@@ -665,6 +665,7 @@ $animationSpeed: 40s;
 
   #feed-title>h1 {
     font-size: 7.0rem !important;
+
   }
 
   #feed-title>h2 {
@@ -742,8 +743,8 @@ a {
 }
 
 #feed-title>h1 {
-  color: #1BCC89;
-  font-size: 4rem;
+  color: black;
+  font-size: 5rem;
   font-weight: 900;
   letter-spacing: -1px;
   line-height: .9;
@@ -751,7 +752,7 @@ a {
 }
 
 #feed-title>h2 {
-  color: #1BCC89;
+  color: black !important;
   font-family: acumin-pro-wide, Acumin Pro Wide, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1.7rem;
   font-weight: 500;

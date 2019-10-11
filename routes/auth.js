@@ -85,6 +85,24 @@ router.get(
 );
 
 // ========================================= POST ROUTES ======================================
+router.post("/api", (req, res, next) => {
+  const { query } = req.body;
+
+  Project.find({
+    $text: {
+      $search: query,
+      $caseSensitive: false
+    }
+  })
+    .populate("authorId")
+    .then(Allprojects => {
+      // res.send(Allprojects);
+      res.render("feed", { Allprojects });
+    })
+    .catch(err => {
+      throw new Error(err);
+    });
+});
 
 // Alterando profile image
 router.post(

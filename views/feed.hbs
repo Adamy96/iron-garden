@@ -6,7 +6,7 @@
     </a>
     <form action="/api" method="POST" class="navbar-search">
       <!-- Chamada AJAX -->
-      <input type="text" class="navbar-search__input">
+      <input type="text" class="navbar-search__input" name="query">
       <button class="navbar-search__btn">Search</button>
     </form>
     <img src="../images/menuBars.svg" alt="Bars dropdown menu" class="navbar__dropdown">
@@ -158,7 +158,7 @@
     </div> --}}
 
     {{!-- --------------------------------------------------------------------------------------------------- --}}
-    <div class="flip">
+    {{!-- <div class="flip">
       <div class="front"
         style="background-image: url(https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">
         <h1 class="text-shadow">MOUNTAIN</hi>
@@ -193,7 +193,7 @@
     </div>
 
     <br>
-    <br>
+    <br> --}}
 
     {{#each Allprojects}}
 
